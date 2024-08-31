@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Frontend App</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Add this div to the top right of the page -->
+  <div id="mode-switcher-container" style="position: absolute; top: 10px; right: 10px; display: flex; gap: 10px;">
+    <!-- Add the model switcher button -->
+    <button id="model-switcher-button" style="background-color: #4CAF50; color: #fff; border: none; padding: 10px 20px; font-size: 16px; cursor: pointer;">Model Switching</button>
+    <!-- Keep the existing mode switcher button -->
+    <button id="mode-switcher" style="background-color: #4CAF50; color: #fff; border: none; padding: 10px 20px; font-size: 16px; cursor: pointer;">Switch to Light Mode</button>
+  </div>
+  <div class="container">
+    <div class="chat-list">
+      <h2>Chat List</h2>
+      <button id="create-new-chat-button" class="create-new-chat-button">Create New Chat</button>
+      <ul id="chat-list-ul">
+        <!-- chat list items will be generated here -->
+      </ul>
+    </div>
+    <div class="chat-window">
+      <h2>New Chat</h2>
+      <div class="chat-history" id="chat-history-container">
+        <!-- chat history will be displayed here -->
+      </div>
+      <div class="input-box">
+        <textarea id="message-input" placeholder="Type a message..."></textarea>
+        <div id="file-container" style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px;">
+          <!-- attached files will be displayed here -->
+        </div>
+        <div style="display: flex; justify-content: flex-start;">
+          <button id="send-button">Send</button>
+          <label for="file-input" class="browse-button" style="margin-left: 10px;">Browse</label>
+          <input type="file" id="file-input" multiple />
+          <span class="file-support-text" style="margin-left: 10px;">Plain text files only (.txt, .js, .py, etc.). No (.docx, .odt, etc.).</span>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script>
+  <script src="chat_list.js"></script>
+  <script src="chat_window.js"></script>
+  <script src="model_switcher.js"></script>
+  <script>
+    // Add event listener to mode switcher button
+    document.getElementById('mode-switcher').addEventListener('click', () => {
+      const body = document.body;
+      const modeSwitcher = document.getElementById('mode-switcher');
+      if (body.classList.contains('light-mode')) {
+        body.classList.remove('light-mode');
+        modeSwitcher.textContent = 'Switch to Light Mode';
+      } else {
+        body.classList.add('light-mode');
+        modeSwitcher.textContent = 'Switch to Dark Mode';
+      }
+      updateFileContainer(); // Call the updateFileContainer function when the mode is switched
+    });
+  </script>
+</body>
+</html>
