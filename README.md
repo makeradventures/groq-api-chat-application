@@ -18,7 +18,7 @@ This project was created as a fun experiment to see how well LLaMA 3.1 70B can w
 
 To get started with the application, follow these steps:
 
-1. **Clone the repository**: Clone the repository to your local machine using your preferred method (e.g., `git clone`).
+1. **Clone the repository**: Clone the repository to your local machine using your preferred method (e.g., `git clone https://github.com/makeradventures/groq-api-chat-application.git`).
 2. **Install dependencies**: Install the required dependencies by running `pip install -r requirements.txt` in your terminal.
 3. **Set environment variables**: Set the `GROQ_API_KEY` environment variable to your Groq API key. You can do this by adding the following line to your terminal or by setting it in your environment variables:
    * `export GROQ_API_KEY=your_api_key` (Linux/Mac)
